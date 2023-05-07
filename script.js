@@ -22,6 +22,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function handleCancel() {
         result.innerHTML = ''
+        save.innerHTML = ''
         sign = numberA = numberB = null
     }
 
@@ -30,26 +31,7 @@ window.addEventListener('DOMContentLoaded', function () {
         numberA = parseFloat(result.innerHTML)
         console.log(numberA)
         result.innerHTML = ''
-        switch (sign) {
-            case '+':
-                save.innerHTML += ' +'
-                break;
-
-            case '-':
-                save.innerHTML += ' -'
-                break;
-
-            case 'x':
-                save.innerHTML += ' x'
-                break;
-
-            case '/':
-                save.innerHTML += ' /'
-                break;
-
-            default:
-                break;
-        }
+        save.innerHTML += ' ' + sign
     }
 
     function handleOperation() {
