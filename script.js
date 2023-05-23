@@ -34,24 +34,37 @@ window.addEventListener('DOMContentLoaded', function () {
         save.innerHTML += ' ' + sign
     }
 
+    function roundingResult(result) {
+        let roundedResult = String(result)
+        if (String(result).length > 6) {
+            const lastNumber = parseInt(String(result).charAt(7))
+            roundedResult = String(result).slice(0, 6)
+
+            if (lastNumber >= 5) {
+                roundedResult = String(parseFloat(roundedResult) + 0.0001)
+            }
+        }
+        return parseFloat(roundedResult)
+    }
+
     function handleOperation() {
         numberB = parseFloat(result.innerHTML)
         switch (sign) {
             case '+':
-                result.innerHTML = numberA + numberB
+                result.innerHTML = roundingResult(numberA + numberB)
                 break;
 
             case '-':
-                result.innerHTML = numberA - numberB
+                result.innerHTML = roundingResult(numberA - numberB)
                 break;
 
             case 'x':
-                result.innerHTML = numberA * numberB
+                result.innerHTML = roundingResult(numberA * numberB)
                 break;
 
             case '/':
                 if (numberB !== 0) {
-                    result.innerHTML = numberA / numberB
+                    result.innerHTML = roundingResult(numberA / numberB)
                 }
                 else {
                     result.innerHTML = 'error'
